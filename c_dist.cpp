@@ -9,11 +9,21 @@ using std::cin, std::vector;
 
 typedef vector<int32_t> V;
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 void const print(vector<V> &diff_abs, V &sum) {
+=======
+//void print (vector<list<int>> const &diff_abs, V const &sum) {
+>>>>>>> Stashed changes
+=======
+//void print (vector<list<int>> const &diff_abs, V const &sum) {
+>>>>>>> Stashed changes
 //    for (auto const &i: diff_abs) {
-//        for (auto const &j: i) printf("%i ", j);
-//            printf("\n");
+//        for (auto const &j: i) printf ("%i ", j);
+//            printf ("\n");
 //    }
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     for (auto const &j: sum) {
         printf("%i ", j);
@@ -47,17 +57,68 @@ void calculate_this_shit(const V &numbers, vector<V> &diff_abs, V &sum, const in
        std::sort(diff_abs[i_].begin(),diff_abs[i_].end());
        for (uint16_t n = 0; n < k; ++n) sum.at(i_) += diff_abs[i_][n];
 	}
+=======
+//    for (auto const &j: sum) printf ("%i ", j);
+//}
+
+void print (V const &sum) {
+    for (auto const &j: sum) 
+        printf ("%i ", j);
+>>>>>>> Stashed changes
 }
 
 
 
+<<<<<<< Updated upstream
 
 
 int main() {
 	
+=======
+//    for (auto const &j: sum) printf ("%i ", j);
+//}
+
+void print (V const &sum) {
+    for (auto const &j: sum) 
+        printf ("%i ", j);
+}
+
+
+
+=======
+>>>>>>> Stashed changes
+void diff_calc_sort (V &numbers, vector<list<int>> &diff_abs, V &sum, const int &k) {
+    int absolute = 0;
+
+    for (unsigned i = 0; i < numbers.size ();++i) {                          // бежим по строкам
+       for (unsigned j = 0; j < numbers.size ();++j) {                       // бежим по столбцам
+           if (i == j) continue;                                        // если тот же индекс, идем дальше
+           else {														// иначе считаем разность между ними
+               absolute = abs (numbers.at (i) - numbers.at (j));			//
+               diff_abs[i].push_back (absolute);
+           }
+       }
+       diff_abs[i].sort ();
+	   int counter = 0;
+       for (auto const &n: diff_abs[i]) {
+		   if (counter == k) { 
+		   	break;
+		   }
+	   	//cout << n << " <- n" << endl;
+	    sum.at (i) += n;
+	    ++counter;
+	   }
+    }
+}
+
+int main () {
+
+>>>>>>> Stashed changes
 	int16_t n = 0, k;
 	
 #ifdef FILESTREAM_
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif	
@@ -75,6 +136,31 @@ int main() {
 
     calculate_this_shit(numbers, diff_abs, sum, k);
     print(diff_abs, sum);
+=======
+=======
+>>>>>>> Stashed changes
+    freopen ("input.txt", "r", stdin);
+    freopen ("output.txt", "w", stdout);
+#endif
+
+    cin >> n >> k;
+
+    V numbers (n), sum (n);
+
+
+    vector<list<int>> diff_abs (n, list<int> ());
+
+    //diff_abs.reserve (n * (n - 1));
+
+    for (auto &i: numbers) cin >> i;
+
+    diff_calc_sort (numbers, diff_abs, sum, k);
+    //print (diff_abs, sum);
+    print (sum);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
     return 0;
 }
